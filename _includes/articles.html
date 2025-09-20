@@ -1,10 +1,49 @@
+<!--
+  Articles Layout Component
+
+  This component displays posts in a responsive grid layout.
+
+  Configuration (set in _config.yml or page front matter):
+  - articles_columns: Number of columns (1-4, default: 3)
+
+  Features:
+  - Responsive grid layout using Skeleton CSS framework
+  - Configurable column count
+  - Post title and abstract/excerpt display
+  - Proper row grouping for consistent layout
+-->
+
+{% comment %} Set default columns if not specified {% endcomment %}
+{% assign columns = page.articles_columns | default: site.articles_columns | default: 2 %}
+
+{% comment %} Validate column count (1-4) {% endcomment %}
+{% if columns < 1 or columns > 4 %}
+  {% assign columns = 3 %}
+{% endif %}
+
+{% comment %} Calculate CSS class based on column count {% endcomment %}
+{% case columns %}
+  {% when 1 %}
+    {% assign column_class = "twelve columns" %}
+  {% when 2 %}
+    {% assign column_class = "six columns" %}
+  {% when 3 %}
+    {% assign column_class = "four columns" %}
+  {% when 4 %}
+    {% assign column_class = "three columns" %}
+{% endcase %}
+
 <div class="articles">
+  {% assign posts_array = site.posts | sort: 'date' | reverse %}
+  {% for i in (0..posts_array.size) %}
+    {% assign index = i | modulo: columns %}
+    {% if index == 0 %}
+      <div class="row">
+    {% endif %}
 
-  {% for post in site.posts %}
-
-      {% cycle 'add row' : '<div class="row">', nil, nil%}
-      <div class="six columns">
-      <!-- <div class="two columns"> -->
+    {% assign post = posts_array[i] %}
+    {% if post %}
+      <div class="{{ column_class }}">
         <a href="{{ site.baseurl }}{{ post.url }}" class="link">
         <h3>{{ post.title }}</h3>
         <div class="justify">
@@ -12,10 +51,13 @@
         </div>
         </a>
       </div>
-      {% cycle 'end row' : nil, nil, '</div>' %}
+    {% endif %}
 
+    {% assign last_in_row = columns | minus: 1 %}
+    {% if index == last_in_row or i == posts_array.size %}
+      </div>
+    {% endif %}
   {% endfor %}
+</div> 
 
-  {% cycle 'end row' : nil, '</div>', '</div>', '</div>' %}
 
-<!-- </div> -->

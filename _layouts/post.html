@@ -2,6 +2,42 @@
 layout: default
 ---
 
+<!--
+  Post Layout Component
+
+  This layout displays individual posts with configurable column layout for content.
+
+  Configuration (set in _config.yml, page front matter, or post front matter):
+  - posts_columns: Number of columns for post content (1-3, default: 2)
+    - 1: Full width (onecol)
+    - 2: Two columns (twocol)
+    - 3: Three columns (threecol)
+
+  Features:
+  - Responsive column layout for post content
+  - Configurable column count
+  - Post metadata display (title, abstract, tags, references)
+  - Author attribution
+-->
+
+{% comment %} Set default columns for post content if not specified {% endcomment %}
+{% assign post_columns = page.posts_columns | default: site.posts_columns | default: 2 %}
+
+{% comment %} Validate column count (1-3) for posts {% endcomment %}
+{% if post_columns < 1 or post_columns > 3 %}
+  {% assign post_columns = 2 %}
+{% endif %}
+
+{% comment %} Calculate CSS class based on column count {% endcomment %}
+{% case post_columns %}
+  {% when 1 %}
+    {% assign column_class = "onecol" %}
+  {% when 2 %}
+    {% assign column_class = "twocol" %}
+  {% when 3 %}
+    {% assign column_class = "threecol" %}
+{% endcase %}
+
 <main>
   <div class="container">
     {% include author.html %}
@@ -25,8 +61,7 @@ layout: default
     <br>
     {% include location.html %}
 
-    <!-- <div class="threecol justify"> -->
-    <div class="twocol justify">
+    <div class="{{ column_class }} justify">
       {{ content }}
     </div>
 

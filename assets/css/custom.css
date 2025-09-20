@@ -107,21 +107,22 @@ html.font-seoul h1, html.font-seoul h2, html.font-seoul h3, html.font-seoul h4, 
   font-family: 'SeoulHangang', 'IM Fell English SC', serif !important;
 }
 
-/* body 클래스도 지원 (하위 호환성) */
-.font-chosun {
-  font-family: 'ChosunCentennial', 'IM Fell DW Pica', 'Noto Serif KR', serif !important;
+/* Redundant font classes removed - using html.font-* approach only */
+
+/* Column layouts */
+
+/* One column layout (full width) */
+.onecol {
+  -ms-word-break: keep-all;
+  word-break: keep-all;
+  hyphens: auto;
+  -webkit-hyphens: auto;
+  -moz-hyphens: auto;
+  width: 100%;
 }
 
-.font-chosun h1, .font-chosun h2, .font-chosun h3, .font-chosun h4, .font-chosun h5, .font-chosun h6, .font-chosun .brand {
-  font-family: 'ChosunCentennial', 'IM Fell English SC', serif !important;
-}
-
-.font-seoul {
-  font-family: 'SeoulHangang', 'IM Fell DW Pica', 'Noto Serif KR', serif !important;
-}
-
-.font-seoul h1, .font-seoul h2, .font-seoul h3, .font-seoul h4, .font-seoul h5, .font-seoul h6, .font-seoul .brand {
-  font-family: 'SeoulHangang', 'IM Fell English SC', serif !important;
+.onecol::first-letter {
+  font-size: 2.5em;
 }
 
 /* Two column layout */
@@ -131,13 +132,15 @@ html.font-seoul h1, html.font-seoul h2, html.font-seoul h3, html.font-seoul h4, 
   hyphens: auto;
   -webkit-hyphens: auto;
   -moz-hyphens: auto;
+  width: 100%;
 }
 
 .twocol::first-letter {
   font-size: 2.5em;
 }
 
-@media only screen and (min-device-width : 768px) {
+/* Responsive columns for twocol */
+@media only screen and (min-width: 768px) {
   .twocol {
     -moz-column-count: 2;
     -moz-column-gap: 20px;
@@ -145,7 +148,62 @@ html.font-seoul h1, html.font-seoul h2, html.font-seoul h3, html.font-seoul h4, 
     -webkit-column-gap: 20px;
     column-count: 2;
     column-gap: 20px;
-    width: 100%;
+  }
+}
+
+/* On smaller screens, keep single column */
+@media only screen and (max-width: 767px) {
+  .twocol {
+    -moz-column-count: 1;
+    -webkit-column-count: 1;
+    column-count: 1;
+  }
+}
+
+/* Three column layout */
+.threecol {
+  -ms-word-break: keep-all;
+  word-break: keep-all;
+  hyphens: auto;
+  -webkit-hyphens: auto;
+  -moz-hyphens: auto;
+  width: 100%;
+}
+
+.threecol::first-letter {
+  font-size: 2.5em;
+}
+
+/* Responsive columns for threecol */
+@media only screen and (min-width: 1024px) {
+  .threecol {
+    -moz-column-count: 3;
+    -moz-column-gap: 20px;
+    -webkit-column-count: 3;
+    -webkit-column-gap: 20px;
+    column-count: 3;
+    column-gap: 20px;
+  }
+}
+
+/* On medium screens (tablets), use 2 columns */
+@media only screen and (min-width: 768px) and (max-width: 1023px) {
+  .threecol {
+    -moz-column-count: 2;
+    -moz-column-gap: 20px;
+    -webkit-column-count: 2;
+    -webkit-column-gap: 20px;
+    column-count: 2;
+    column-gap: 20px;
+  }
+}
+
+/* On smaller screens, keep single column */
+@media only screen and (max-width: 767px) {
+  .threecol {
+    -moz-column-count: 1;
+    -webkit-column-count: 1;
+    column-count: 1;
   }
 }
 

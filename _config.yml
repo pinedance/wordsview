@@ -36,6 +36,10 @@ logo: /assets/logo.png
 
 lang: kr
 
+# Layout configuration
+articles_columns: 2  # Number of columns for article layout (1-4, default: 2)
+posts_columns: 2     # Number of columns for post content (1-3, default: 2)
+
 social:
   name: Pinedance
   links:
