@@ -1,0 +1,173 @@
+/* WordsView Custom CSS */
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;700&display=swap');
+
+/* 조선일보 100년 폰트 */
+@font-face {
+  font-family: 'ChosunCentennial';
+  src: url('../fonts/ChosunCentennial_ttf.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: fallback;
+}
+
+/* 서울한강 폰트 */
+@font-face {
+  font-family: 'SeoulHangang';
+  src: url('../fonts/SeoulHangangL.ttf') format('truetype');
+  font-weight: 300;
+  font-style: normal;
+  font-display: fallback;
+}
+
+@font-face {
+  font-family: 'SeoulHangang';
+  src: url('../fonts/SeoulHangangM.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: fallback;
+}
+
+@font-face {
+  font-family: 'SeoulHangang';
+  src: url('../fonts/SeoulHangangB.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: fallback;
+}
+
+@font-face {
+  font-family: 'SeoulHangang';
+  src: url('../fonts/SeoulHangangEB.ttf') format('truetype');
+  font-weight: 800;
+  font-style: normal;
+  font-display: fallback;
+}
+
+/* 폰트 선택기 스타일 */
+.font-selector {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 1000;
+}
+
+.font-selector button {
+  background-color: #2f2f2f;
+  color: #F2F7F9;
+  border: none;
+  padding: 8px 12px;
+  margin: 2px;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 0.9em;
+  border-radius: 3px;
+}
+
+.font-selector button:hover {
+  background-color: #4f4f4f;
+}
+
+.font-options {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  background-color: #F2F7F9;
+  border: 1px solid #2f2f2f;
+  border-radius: 3px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+  min-width: 150px;
+}
+
+.font-options button {
+  display: block;
+  width: 100%;
+  text-align: left;
+  background-color: transparent;
+  color: #2f2f2f;
+}
+
+.font-options button:hover {
+  background-color: #e2e7e9;
+}
+
+/* 폰트 클래스 - html 요소에 적용 */
+html.font-chosun body {
+  font-family: 'ChosunCentennial', 'IM Fell DW Pica', 'Noto Serif KR', serif !important;
+}
+
+html.font-chosun h1, html.font-chosun h2, html.font-chosun h3, html.font-chosun h4, html.font-chosun h5, html.font-chosun h6, html.font-chosun .brand {
+  font-family: 'ChosunCentennial', 'IM Fell English SC', serif !important;
+}
+
+html.font-seoul body {
+  font-family: 'SeoulHangang', 'IM Fell DW Pica', 'Noto Serif KR', serif !important;
+}
+
+html.font-seoul h1, html.font-seoul h2, html.font-seoul h3, html.font-seoul h4, html.font-seoul h5, html.font-seoul h6, html.font-seoul .brand {
+  font-family: 'SeoulHangang', 'IM Fell English SC', serif !important;
+}
+
+/* body 클래스도 지원 (하위 호환성) */
+.font-chosun {
+  font-family: 'ChosunCentennial', 'IM Fell DW Pica', 'Noto Serif KR', serif !important;
+}
+
+.font-chosun h1, .font-chosun h2, .font-chosun h3, .font-chosun h4, .font-chosun h5, .font-chosun h6, .font-chosun .brand {
+  font-family: 'ChosunCentennial', 'IM Fell English SC', serif !important;
+}
+
+.font-seoul {
+  font-family: 'SeoulHangang', 'IM Fell DW Pica', 'Noto Serif KR', serif !important;
+}
+
+.font-seoul h1, .font-seoul h2, .font-seoul h3, .font-seoul h4, .font-seoul h5, .font-seoul h6, .font-seoul .brand {
+  font-family: 'SeoulHangang', 'IM Fell English SC', serif !important;
+}
+
+/* Two column layout */
+.twocol {
+  -ms-word-break: keep-all;
+  word-break: keep-all;
+  hyphens: auto;
+  -webkit-hyphens: auto;
+  -moz-hyphens: auto;
+}
+
+.twocol::first-letter {
+  font-size: 2.5em;
+}
+
+@media only screen and (min-device-width : 768px) {
+  .twocol {
+    -moz-column-count: 2;
+    -moz-column-gap: 20px;
+    -webkit-column-count: 2;
+    -webkit-column-gap: 20px;
+    column-count: 2;
+    column-gap: 20px;
+    width: 100%;
+  }
+}
+
+/* 한글 텍스트 최적화 */
+body {
+  word-break: keep-all;
+  line-height: 1.8;
+  letter-spacing: -0.02em;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: 'IM Fell English SC', serif;
+  word-break: keep-all;
+  line-height: 1.4;
+}
+
+p {
+  word-break: keep-all;
+  line-height: 1.8;
+}

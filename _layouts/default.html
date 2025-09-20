@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>{% if page.title %}{{ page.title }}{% else %}{{ site.title }}{% endif %}</title>
+
+    <!-- 폰트 프리로드 -->
+    <link rel="preload" href="{{ site.baseurl }}/assets/fonts/ChosunCentennial_ttf.ttf" as="font" type="font/ttf" crossorigin>
+    <link rel="preload" href="{{ site.baseurl }}/assets/fonts/SeoulHangangM.ttf" as="font" type="font/ttf" crossorigin>
+
+    {% include header.html %}
+    {% seo %}
+
+    <!-- 폰트 선택 스크립트를 head에서 즉시 실행 -->
+    <script>
+    // 즉시 실행하여 FOUC 방지
+    (function() {
+      const savedFont = localStorage.getItem('selectedFont');
+      if (savedFont) {
+        document.documentElement.className += ' font-' + savedFont;
+      } else {
+        document.documentElement.className += ' font-chosun';
+        localStorage.setItem('selectedFont', 'chosun');
+      }
+    })();
+    </script>
+  </head>
+  <body>
+
+  {% include nav.html %}
+
+    <!-- 폰트 선택기 -->
+    <div class="font-selector">
+      <button id="font-toggle" onclick="toggleFontSelector()">폰트 변경</button>
+      <div id="font-options" class="font-options" style="display: none;">
+        <button onclick="changeFont('chosun')">조선100년체</button>
+        <button onclick="changeFont('seoul')">서울한강체</button>
+      </div>
+    </div>
+
+    {{ content }}
+
+    {% include foot.html %}
+
+    <script src="{{ site.baseurl }}/assets/js/font-selector.js"></script>
+  </body>
+</html>

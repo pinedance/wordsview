@@ -1,0 +1,22 @@
+---
+layout: default
+---
+
+<main>
+<div class="container">
+  {% include author.html %}
+  <h1 class="brand title center" id="title">{{ site.title | upcase }}</h1>
+  <h5 class="center">{{ site.description | markdownify }}</h5>
+  {% include tagline.html %}
+  {% include location.html %}
+  <div class="center">
+  {% if page.description %}
+  <h5>{{ page.description }}</h5>
+  {% endif %}
+  <br>
+  </div>
+
+  {{ content }}
+  
+</div>
+</main>

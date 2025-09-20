@@ -1,0 +1,48 @@
+---
+layout: default
+---
+
+<main>
+  <div class="container">
+    {% include author.html %}
+
+    <h2 class="brand center" id="title">{{ page.title | upcase }}</h2>
+
+    {% if page.abstract %}
+    <h5 class="center">{{ page.abstract }}</h5>
+    {% endif %}
+
+    {% if page.tags %}
+    <img src="{{ site.baseurl }}/assets/img/grunge.png" alt="" class="line tag flip">
+    <p class="right tagline">
+      {% for tag in page.tags %}
+      <span>{{ tag }}  </span>
+      {% endfor %}
+    </p>
+    <img src="{{ site.baseurl }}/assets/img/grunge.png" alt="" class="line tag">
+    {% endif %}
+
+    <br>
+    {% include location.html %}
+
+    <!-- <div class="threecol justify"> -->
+    <div class="twocol justify">
+      {{ content }}
+    </div>
+
+    {% if page.references %}
+    <div class="references">
+      <img src="{{ site.baseurl }}/assets/img/grunge.png" alt="" class="line">
+      <h6 class="center">참고 자료</h6>
+      <ul class="center">
+        {% for reference in page.references %}
+        <li><a href="{{ reference.url }}" target="_blank">{{ reference.title }}</a></li>
+        {% endfor %}
+      </ul>
+      <img src="{{ site.baseurl }}/assets/img/grunge.png" alt="" class="line flip">
+    </div>
+    {% endif %}
+
+    <p class="right italics">by {{ page.author }}</p>
+  </div>
+</main>

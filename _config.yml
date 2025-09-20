@@ -1,0 +1,65 @@
+# Welcome to Jekyll!
+#
+# This config file is meant for settings that affect your whole blog, values
+# which you are expected to set up once and rarely edit after that. If you find
+# yourself editing this file very often, consider using Jekyll's data files
+# feature for the data you need to update frequently.
+#
+# For technical reasons, this file is *NOT* reloaded automatically when you use
+# 'bundle exec jekyll serve'. If you change this file, please restart the server process.
+
+# Site settings
+# These are used to personalize your new site. If you look in the HTML files,
+# you will see them accessed via {{ site.title }}, {{ site.email }}, and so on.
+# You can create any custom variable you would like, and they will be accessible
+# in the templates via {{ site.myvariable }}.
+title: WordsView
+# email: your-email@example.com
+description: >
+  세상의 복잡한 현상을 표현하는<br>
+  짧은 단어나 용어들을 기록하는 마이크로블로그
+tagline: Words as a View
+location: Seoul
+date: true
+baseurl: "" # the subpath of your site, e.g. /blog
+url: "wordsview.pinedance.click" # the base hostname & protocol for your site, e.g. http://example.com
+author: pinedance
+# google_analytics: UA-101394056-1
+
+# SEO
+# twitter:
+#   username: jdatap
+# facebook:
+#  app_id: 101766790448070
+
+logo: /assets/logo.png
+
+lang: kr
+
+social:
+  name: Pinedance
+  links:
+    - https://github.com/pinedance
+
+# Navigation
+navigation:
+  - title: "github"
+    href: "https://github.com/pinedance"
+
+# Build settings
+exclude: README.md
+markdown: kramdown
+theme: minima
+gems:
+  - jekyll-feed
+  - jekyll-seo-tag
+exclude:
+  - Gemfile
+  - Gemfile.lock
+
+# Suppress Sass deprecation warnings
+sass:
+  quiet_deps: true
+plugins_dir:
+  - jekyll-roman
+  - jekyll-seo-tag
