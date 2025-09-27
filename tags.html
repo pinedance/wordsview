@@ -1,0 +1,30 @@
+---
+layout: home
+title: 태그 목록
+description: 모든 태그와 해당 포스트들을 확인할 수 있습니다.
+---
+
+<div class="center">
+  <h2>모든 태그</h2>
+  <p>각 태그를 클릭하면 해당 태그의 포스트들을 볼 수 있습니다.</p>
+</div>
+
+{% assign tags = site.posts | map: 'tags' | join: ',' | split: ',' | uniq | sort %}
+
+<div class="tags-cloud center" style="margin: 3rem 0;">
+  {% for tag in tags %}
+    {% if tag != "" %}
+      {% assign tag_posts_count = site.posts | where_exp: "post", "post.tags contains tag" | size %}
+      <a href="{{ site.baseurl }}/tags/{{ tag | slugify }}/" class="tag-link" style="margin: 0.3rem 0.5rem; padding: 0.5rem 1rem; background: #f0f0f0; border-radius: 20px; text-decoration: none; display: inline-block; font-size: 1rem; font-weight: 500; transition: background 0.2s;">
+        {{ tag }} ({{ tag_posts_count }})
+      </a>
+    {% endif %}
+  {% endfor %}
+</div>
+
+<style>
+.tag-link:hover {
+  background: #ddd !important;
+  color: inherit;
+}
+</style>

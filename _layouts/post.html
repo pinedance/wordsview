@@ -52,7 +52,9 @@ layout: default
     <img src="{{ site.baseurl }}/assets/img/grunge.png" alt="" class="line tag flip">
     <p class="right tagline">
       {% for tag in page.tags %}
-      <span>{{ tag }}  </span>
+      <a href="{{ site.baseurl }}/tags/{{ tag | slugify }}/" style="text-decoration: none; color: inherit;">
+        <span style="margin-right: 1rem; padding: 0.2rem 0.5rem; background: rgba(0,0,0,0.1); border-radius: 3px;">{{ tag }}</span>
+      </a>
       {% endfor %}
     </p>
     <img src="{{ site.baseurl }}/assets/img/grunge.png" alt="" class="line tag">

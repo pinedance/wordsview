@@ -1,0 +1,51 @@
+---
+layout: home
+---
+
+<div class="center">
+  <h2>{{ page.title }} 태그</h2>
+  <p>{{ page.title }} 태그가 포함된 {{ page.posts | size }}개의 포스트</p>
+  <br>
+  <a href="{{ site.baseurl }}/tags.html" style="text-decoration: none; color: #666;">← 모든 태그 보기</a>
+</div>
+
+<div class="articles">
+  {% assign columns = page.articles_columns | default: site.articles_columns | default: 2 %}
+
+  {% case columns %}
+    {% when 1 %}
+      {% assign column_class = "twelve columns" %}
+    {% when 2 %}
+      {% assign column_class = "six columns" %}
+    {% when 3 %}
+      {% assign column_class = "four columns" %}
+    {% when 4 %}
+      {% assign column_class = "three columns" %}
+  {% endcase %}
+
+  {% assign tag_posts = page.posts | sort: 'date' | reverse %}
+
+  {% for i in (0..tag_posts.size) %}
+    {% assign index = i | modulo: columns %}
+    {% if index == 0 %}
+      <div class="row">
+    {% endif %}
+
+    {% assign post = tag_posts[i] %}
+    {% if post %}
+      <div class="{{ column_class }}">
+        <a href="{{ site.baseurl }}{{ post.url }}" class="link">
+        <h3>{{ post.title }}</h3>
+        <div class="justify">
+          {% if post.abstract %}{{ post.abstract }}{% else %}{{ post.content | truncatewords:50 | strip_newlines }}{% endif %}
+        </div>
+        </a>
+      </div>
+    {% endif %}
+
+    {% assign last_in_row = columns | minus: 1 %}
+    {% if index == last_in_row or i == tag_posts.size %}
+      </div>
+    {% endif %}
+  {% endfor %}
+</div>

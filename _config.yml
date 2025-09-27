@@ -47,6 +47,8 @@ social:
 
 # Navigation
 navigation:
+  - title: "tags"
+    href: "/tags.html"
   - title: "github"
     href: "https://github.com/pinedance"
 
@@ -56,6 +58,7 @@ theme: minima
 gems:
   - jekyll-feed
   - jekyll-seo-tag
+  - jekyll-archives
 exclude:
   - .git/
   - .gitignore
@@ -82,3 +85,12 @@ plugins_dir:
 
 # Development server settings
 port: 8088
+
+# Jekyll Archives configuration
+jekyll-archives:
+  enabled:
+    - tags
+  layouts:
+    tag: tag
+  permalinks:
+    tag: '/tags/:name/'

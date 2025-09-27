@@ -23,5 +23,6 @@ group :jekyll_plugins do
    gem "jekyll-feed"
    gem "jekyll-roman"
    gem "jekyll-seo-tag"
+   gem "jekyll-archives"
 end
 
