@@ -51,15 +51,27 @@ navigation:
     href: "https://github.com/pinedance"
 
 # Build settings
-exclude: README.md
 markdown: kramdown
 theme: minima
 gems:
   - jekyll-feed
   - jekyll-seo-tag
 exclude:
+  - .git/
+  - .gitignore
+  - README.md
   - Gemfile
   - Gemfile.lock
+  - gemfiles/
+  - .sass-cache/
+  - .jekyll-cache/
+  - pyproject.toml
+  - node_modules
+  - vendor/bundle/
+  - vendor/cache/
+  - vendor/gems/
+  - vendor/ruby/
+  - prompts/
 
 # Suppress Sass deprecation warnings
 sass:
@@ -67,3 +79,6 @@ sass:
 plugins_dir:
   - jekyll-roman
   - jekyll-seo-tag
+
+# Development server settings
+port: 8088
