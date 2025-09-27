@@ -84,7 +84,7 @@ plugins_dir:
   - jekyll-seo-tag
 
 # Development server settings
-port: 8088
+port: 8089
 
 # Jekyll Archives configuration
 jekyll-archives:

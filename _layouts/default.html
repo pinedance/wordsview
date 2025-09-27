@@ -3,9 +3,20 @@
   <head>
     <title>{% if page.title %}{{ page.title }}{% else %}{{ site.title }}{% endif %}</title>
 
+    <!-- DNS 프리펫치 -->
+    <link rel="dns-prefetch" href="//fonts.googleapis.com">
+    <link rel="dns-prefetch" href="//fonts.gstatic.com">
+
     <!-- 폰트 프리로드 -->
     <link rel="preload" href="{{ site.baseurl }}/assets/fonts/ChosunCentennial_ttf.ttf" as="font" type="font/ttf" crossorigin>
+    <link rel="preload" href="{{ site.baseurl }}/assets/fonts/SeoulHangangL.ttf" as="font" type="font/ttf" crossorigin>
     <link rel="preload" href="{{ site.baseurl }}/assets/fonts/SeoulHangangM.ttf" as="font" type="font/ttf" crossorigin>
+    <link rel="preload" href="{{ site.baseurl }}/assets/fonts/SeoulHangangB.ttf" as="font" type="font/ttf" crossorigin>
+    <link rel="preload" href="{{ site.baseurl }}/assets/fonts/SeoulHangangEB.ttf" as="font" type="font/ttf" crossorigin>
+
+    <!-- 중요한 이미지 프리로드 -->
+    <link rel="preload" href="{{ site.baseurl }}/assets/img/bg.jpg" as="image">
+    <link rel="preload" href="{{ site.baseurl }}/assets/img/grunge.png" as="image">
 
     {% include header.html %}
     {% seo %}
@@ -42,5 +53,19 @@
     {% include foot.html %}
 
     <script src="{{ site.baseurl }}/assets/js/font-selector.js"></script>
+
+    <script>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', function() {
+        navigator.serviceWorker.register('{{ site.baseurl }}/sw.js')
+          .then(function(registration) {
+            console.log('SW registered: ', registration);
+          })
+          .catch(function(registrationError) {
+            console.log('SW registration failed: ', registrationError);
+          });
+      });
+    }
+    </script>
   </body>
 </html>
